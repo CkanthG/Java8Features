@@ -79,6 +79,12 @@ public class MapOperations {
                 Map.Entry::getValue,
                 (k, v) -> k,
                 HashMap::new));
+        Map<Integer, Emp> entryMap = map.entrySet().stream()
+                .sorted((o1, o2) -> o2.getValue().getCity().compareTo(o1.getValue().getCity()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey, Map.Entry::getValue, (k, v) -> k, LinkedHashMap::new
+                ));
+        out.println("entryMap : "+entryMap);
         out.println(collect);
     }
 
